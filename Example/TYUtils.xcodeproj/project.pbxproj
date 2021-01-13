@@ -212,7 +212,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 1230;
-				ORGANIZATIONNAME = CocoaPods;
+				ORGANIZATIONNAME = TekITEazy;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;

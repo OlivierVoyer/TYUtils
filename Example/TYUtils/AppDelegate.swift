@@ -3,7 +3,7 @@
 //  TYUtils
 //
 //  Created by Olivier Voyer on 01/12/2021.
-//  Copyright (c) 2021 Olivier Voyer. All rights reserved.
+//  Copyright (c) 2021 TekITEazy. All rights reserved.
 //
 
 import UIKit
