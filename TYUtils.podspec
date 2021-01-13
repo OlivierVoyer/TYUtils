@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TYUtils'
-  s.version          = '0.1.6'
+  s.version          = '0.2.0'
   s.summary          = 'Simple iOS framework adding helpers and extensions'
   s.description      = <<-DESC
                        A set of iOS helpers and extensions to help writing smart, robust, clear and perfomant code.
