@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		051658A2BC39138045EE5885 /* Pods_TYUtils_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7DD008A34B2A869AD4DB97 /* Pods_TYUtils_Example.framework */; };
+		56886C4A25AF4FE90079ABEF /* PropertyWrappersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56886C4925AF4FE90079ABEF /* PropertyWrappersTests.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		15E1B99D6E64E818C4E3A4F4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		2BDBD3EDE904100BC4E652F3 /* Pods-TYUtils_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYUtils_Example.debug.xcconfig"; path = "Target Support Files/Pods-TYUtils_Example/Pods-TYUtils_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		56886C4925AF4FE90079ABEF /* PropertyWrappersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyWrappersTests.swift; sourceTree = "<group>"; };
 		5A1E883457BEA577F65C6AF5 /* Pods-TYUtils_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYUtils_Example.release.xcconfig"; path = "Target Support Files/Pods-TYUtils_Example/Pods-TYUtils_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* TYUtils_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYUtils_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				56886C4925AF4FE90079ABEF /* PropertyWrappersTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -361,6 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56886C4A25AF4FE90079ABEF /* PropertyWrappersTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
