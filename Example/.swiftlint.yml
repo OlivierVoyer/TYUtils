@@ -1,0 +1,10 @@
+included:
+  - ../Sources
+  - TYUtils
+  - Tests
+
+line_length:
+    ignores_urls: true # default to false
+    ignores_function_declarations: true # default to false
+    ignores_comments: true # default to false
+    ignores_interpolated_strings: true # default to false

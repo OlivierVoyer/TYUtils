@@ -1,0 +1,31 @@
+PODS:
+  - KeychainSwift (19.0.0)
+  - SwiftLint (0.42.0)
+  - TYUtils (0.1.5):
+    - TYUtils/Core (= 0.1.5)
+  - TYUtils/Core (0.1.5):
+    - TYUtils/PropertyWrappers
+  - TYUtils/PropertyWrappers (0.1.5):
+    - KeychainSwift (~> 19.0.0)
+
+DEPENDENCIES:
+  - SwiftLint
+  - TYUtils (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - KeychainSwift
+    - SwiftLint
+
+EXTERNAL SOURCES:
+  TYUtils:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
+  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
+  TYUtils: 87be5330db3c019162cb95577c2d4a5f0bdbb234
+
+PODFILE CHECKSUM: 0431bd1ae2168a09c5e4f91416ffaf0ddcca3441
+
+COCOAPODS: 1.10.1
