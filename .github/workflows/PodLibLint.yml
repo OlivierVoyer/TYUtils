@@ -4,7 +4,7 @@ name: PodLibLint
 on: 
   push:
     branches:
-      - master
+      - $default-branch 
   pull_request:
 
 jobs:
