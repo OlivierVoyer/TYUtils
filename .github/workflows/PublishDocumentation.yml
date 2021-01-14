@@ -1,6 +1,11 @@
 # https://heartbeat.fritz.ai/generating-docs-for-your-swift-package-and-hosting-on-github-pages-2786b8ce28d
 name: PublishDocumentation
-on: [push]
+
+on: 
+  push:
+    branches:
+      - main
+
 jobs:
   deploy_docs:
     runs-on: macOS-latest
