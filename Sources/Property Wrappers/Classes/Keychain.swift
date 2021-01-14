@@ -9,7 +9,16 @@ import Foundation
 import KeychainSwift
 
 /**
- Property wrapper allowing the automatic loading/saving of any compatible value in the keychain.
+ The `Keychain` property wrapper is responsible for saving and loading a value from the user keychain automatically.
+
+ NOTE: The current implementation is using the [KeychainSwift](https://github.com/evgenyneu/keychain-swift) library.
+
+ ```swift
+ @Keychain(key: "isAppFirstInstallEver",
+           synchronizable: true,
+           keyPrefix: "com.tekiteazy.TYUtils_Example.")
+ var isAppFirstInstallEver: Bool = true
+ ```
 
  NOTE: The value parameter can be only one of String, Bool or Data.
  */
@@ -94,7 +103,7 @@ public extension Keychain {
 // MARK: KeychainStorable Protocol
 
 /**
- Ability for a given type to be loaded/saved from/to the keychian.
+ Ability for a given type to be loaded/saved from/to the keychain.
  */
 public protocol KeychainStorable {
 
