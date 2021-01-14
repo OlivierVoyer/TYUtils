@@ -26,6 +26,8 @@ pod 'TYUtils/PropertyWrappers'
 
 ## Documentation
 
+The complete API reference is available [here](https://oliviervoyer.github.io/TYUtils).
+
 The READMEs for components of TYUtils can be found in their respective
 project folders.
 
