@@ -4,7 +4,9 @@ PODS:
   - TYUtils (0.2.0):
     - TYUtils/Core (= 0.2.0)
   - TYUtils/Core (0.2.0):
+    - TYUtils/Extensions
     - TYUtils/PropertyWrappers
+  - TYUtils/Extensions (0.2.0)
   - TYUtils/PropertyWrappers (0.2.0):
     - KeychainSwift (~> 19.0.0)
 
@@ -24,7 +26,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
   SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
-  TYUtils: 953502fd5b8c2a568dec451e5418e42996a03492
+  TYUtils: 128636bcce2bdbd5db09d86dbb8427fe88f9115c
 
 PODFILE CHECKSUM: 0431bd1ae2168a09c5e4f91416ffaf0ddcca3441
 
