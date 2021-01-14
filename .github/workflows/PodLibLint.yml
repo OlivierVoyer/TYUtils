@@ -1,5 +1,12 @@
 # https://github.com/ty0x2333/cocoapods-action
-on: push
+name: PodLibLint
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+
 jobs:
   test:
     runs-on: macOS-latest
