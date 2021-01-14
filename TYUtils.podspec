@@ -22,11 +22,17 @@ Pod::Spec.new do |s|
 
   s.subspec 'Core' do |cs|
       cs.dependency 'TYUtils/PropertyWrappers'
+      cs.dependency 'TYUtils/Extensions'
   end
 
   s.subspec 'PropertyWrappers' do |pws|
       pws.source_files   = 'Sources/Property Wrappers/Classes/**/*.{swift}'
       pws.frameworks     = 'Foundation'
       pws.dependency       'KeychainSwift', '~> 19.0.0'
+  end
+
+  s.subspec 'Extensions' do |es|
+      es.source_files   = 'Sources/Extensions/Classes/**/*.{swift}'
+      es.frameworks     = 'Foundation'
   end
 end

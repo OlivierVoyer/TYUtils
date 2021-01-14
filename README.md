@@ -22,6 +22,8 @@ If you don't want to use all of TYUtils, there are multiple subspecs which can s
 ```ruby
 # Only pull in Property Wrappers features
 pod 'TYUtils/PropertyWrappers'
+# Only pull in Extensions features
+pod 'TYUtils/Extensions'
 ```
 
 ## Documentation
@@ -32,6 +34,7 @@ The READMEs for components of TYUtils can be found in their respective
 project folders.
 
 - [Property Wrappers](Sources/Property%20Wrappers/README.md)
+- [Extensions](Sources/Extensions/README.md)
 
 ## Local Setup
 
