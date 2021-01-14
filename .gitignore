@@ -32,3 +32,6 @@ Example/Pods
 
 # Fastlane
 fastlane
+
+# Jazzy generated folder
+docs

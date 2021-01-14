@@ -1,0 +1,9 @@
+clean: true
+author: Olivier Voyer
+author_url: https://github.com/OlivierVoyer
+podspec: TYUtils.podspec
+root_url: https://oliviervoyer.github.io/TYUtils
+github_url: https://github.com/OlivierVoyer/TYUtils
+# hide_documentation_coverage: true
+theme: fullwidth
+# undocumented_text: ""
