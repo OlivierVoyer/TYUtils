@@ -62,8 +62,6 @@ public final class Keychain<T: KeychainStorable> {
 
 public extension Keychain {
 
-    // NOTE: In order to share keychain items between apps on the same device they need to have common Keychain Groups registered in Capabilities > Keychain Sharing settings.
-    // Use accessGroup property to access shared keychain items.
     /**
      Initializes a new property wrapper allowing the automatic loading/saving of any compatible value in the keychain.
 
@@ -95,10 +93,30 @@ public extension Keychain {
 
 // MARK: KeychainStorable Protocol
 
+/**
+ Ability for a given type to be loaded/saved from/to the keychian.
+ */
 public protocol KeychainStorable {
+
+    /**
+     Load a value from the keychain if it exists.
+
+     - Parameters:
+        - keychain: Keychain object to use
+        - key: Key under which the data is stored in the keychain
+     */
     static func get(from keychain: KeychainSwift, key: String) -> Self?
+
+    /**
+     Save a value to the keychain.
+
+     - Parameters:
+        - keychain: Keychain object to use
+        - key: Key under which the data is stored in the keychain
+     */
     @discardableResult
     static func set(_ value: Self, in keychain: KeychainSwift, forKey key: String, withAccess access: KeychainSwiftAccessOptions?) -> Bool
+
 }
 
 extension String: KeychainStorable {
@@ -141,10 +159,16 @@ public extension Keychain {
     struct Key: Hashable, Equatable, RawRepresentable {
         public let rawValue: String
 
+        /// Same as `init(rawValue:)`
         public init(_ rawValue: String) {
             self.rawValue = rawValue
         }
 
+        /**
+         Creates a new instance with the specified raw value.
+
+         - Parameter rawValue: The raw value to use for the new instance.
+         */
         public init(rawValue: String) {
             self.rawValue = rawValue
         }
