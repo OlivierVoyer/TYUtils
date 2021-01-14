@@ -9,7 +9,7 @@ on:
       - '.github/workflows/PublishDocumentation.yml'
       - '.jazzy.yaml'
       - '**/*.md'
-      - '**/*.swift
+      - '**/*.swift'
 jobs:
   deploy_docs:
     runs-on: macOS-latest
