@@ -4,7 +4,7 @@ name: PublishDocumentation
 on: 
   push:
     branches:
-      - main
+      - $default-branch 
 
 jobs:
   deploy_docs:
