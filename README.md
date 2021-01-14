@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/TYUtils.svg?style=flat)](https://cocoapods.org/pods/TYUtils)
 [![License](https://img.shields.io/cocoapods/l/TYUtils.svg?style=flat)](https://cocoapods.org/pods/TYUtils)
 [![Platform](https://img.shields.io/cocoapods/p/TYUtils.svg?style=flat)](https://cocoapods.org/pods/TYUtils)
+[![Documentation](https://oliviervoyer.github.io/TYUtils/badge.svg)](https://oliviervoyer.github.io/TYUtils)
 
 A set of iOS helpers and extensions to help writing smart, robust, clear and perfomant code.
 
@@ -24,6 +25,8 @@ pod 'TYUtils/PropertyWrappers'
 ```
 
 ## Documentation
+
+The complete API reference is available [here](https://oliviervoyer.github.io/TYUtils).
 
 The READMEs for components of TYUtils can be found in their respective
 project folders.

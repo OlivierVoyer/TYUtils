@@ -61,10 +61,16 @@ public extension UserDefault {
     struct Key: Hashable, Equatable, RawRepresentable {
         public let rawValue: String
 
+        /// Same as `init(rawValue:)`
         public init(_ rawValue: String) {
             self.rawValue = rawValue
         }
 
+        /**
+         Creates a new instance with the specified raw value.
+         
+         - Parameter rawValue: The raw value to use for the new instance.
+         */
         public init(rawValue: String) {
             self.rawValue = rawValue
         }
