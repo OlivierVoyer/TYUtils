@@ -1,7 +1,10 @@
 # https://github.com/norio-nomura/action-swiftlint
 name: SwiftLint
 
-on:
+on: 
+  push:
+    branches:
+      - main
   pull_request:
     paths:
       - '.github/workflows/SwiftLint.yml'
