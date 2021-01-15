@@ -16,6 +16,7 @@ private extension UserDefault.Key {
 
 private extension Keychain.Key {
     static var isAppFirstInstallEver: Self { return "isAppFirstInstallEver" }
+    static var sessionToken: Self { return "sessionToken" }
 }
 
 @UIApplicationMain
@@ -28,6 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               synchronizable: true,
               keyPrefix: String(describing: AppDelegate.self) + ".")
     var isAppFirstInstallEver: Bool = true
+
+    @Keychain(key: .sessionToken,
+              keyPrefix: String(describing: AppDelegate.self) + ".")
+    var sessionToken: String?
 
     @UserDefault(key: .isAppFirstInstall)
     var isAppFirstInstall: Bool = true
@@ -44,6 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("The app has already been launched for this user on this device or another")
         }
 
+        if let sessionToken = sessionToken {
+            print("Session token is \(sessionToken)")
+        } else {
+            print("No session token available")
+        }
+
         if isAppFirstInstall {
             print("The app is launched for the first time on this device")
         } else {
@@ -57,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         isAppFirstInstallEver = false
+        sessionToken = UUID().uuidString
         isAppFirstInstall = false
         lastLaunchDate = Date()
 

@@ -39,7 +39,7 @@ public final class Keychain<T: KeychainStorable> {
 
     /// Load/save the value to/from the keychain
     public var wrappedValue: T {
-        get { T.get(from: keychain, key: key.rawValue) ?? defaultValue }
+        get { return T.get(from: keychain, key: key.rawValue) ?? defaultValue }
         set { T.set(newValue, in: keychain, forKey: key.rawValue, withAccess: access) }
     }
 
@@ -60,6 +60,24 @@ public final class Keychain<T: KeychainStorable> {
     public init(wrappedValue: T, key: Key, keychain: KeychainSwift = .init(),
                 withAccess access: KeychainSwiftAccessOptions? = nil) {
         self.defaultValue = wrappedValue
+        self.key = key
+        self.keychain = keychain
+        self.access = access
+    }
+
+    /**
+     Initializes a new property wrapper allowing the automatic loading/saving of an optional value of any compatible value in the keychain.
+
+     NOTE: The value parameter can be only one of String, Bool or Data.
+
+     - Parameters:
+        - key: Key under which the data is stored in the keychain
+        - keychain: Keychain object to use
+        - access: Value that indicates when your app needs access to the text in the keychain item. If omitted, the .AccessibleWhenUnlocked option is used that permits the data to be accessed only while the device is unlocked by the user.
+     */
+    public init<U>(key: Key, keychain: KeychainSwift = .init(),
+                   withAccess access: KeychainSwiftAccessOptions? = nil) where T == U?, U: KeychainStorable {
+        self.defaultValue = nil
         self.key = key
         self.keychain = keychain
         self.access = access
@@ -96,6 +114,33 @@ public extension Keychain {
         keychain.synchronizable = synchronizable
         keychain.accessGroup = accessGroup
         self.init(wrappedValue: wrappedValue, key: key, keychain: keychain, withAccess: access)
+    }
+
+    /**
+     Initializes a new property wrapper allowing the automatic loading/saving of an optional value of any compatible value in the keychain.
+
+     NOTE: The value parameter can be only one of String, Bool or Data.
+
+     - Parameters:
+        - key: Key under which the data is stored in the keychain
+        - access: Value that indicates when your app needs access to the text in the keychain item. If omitted, the .AccessibleWhenUnlocked option is used that permits the data to be accessed only while the device is unlocked by the user.
+        - synchronizable: Specifies whether the items can be synchronized with other devices through iCloud.
+        - accessGroup: Specify an access group that will be used to access keychain items. In order to share keychain items between apps on the same device they need to have common Keychain Groups registered in Capabilities > Keychain Sharing settings.
+        - keyPrefix: A prefix that is added before the key in get/set methods.
+     */
+    convenience init<U>(key: Key,
+                        withAccess access: KeychainSwiftAccessOptions? = nil,
+                        synchronizable: Bool = false, accessGroup: String? = nil,
+                        keyPrefix: String? = nil) where T == U?, U: KeychainStorable {
+        let keychain: KeychainSwift = {
+            if let keyPrefix = keyPrefix {
+                return KeychainSwift(keyPrefix: keyPrefix)
+            }
+            return KeychainSwift()
+        }()
+        keychain.synchronizable = synchronizable
+        keychain.accessGroup = accessGroup
+        self.init(wrappedValue: nil, key: key, keychain: keychain, withAccess: access)
     }
 
 }
@@ -155,6 +200,20 @@ extension Data: KeychainStorable {
     @discardableResult
     public static func set(_ value: Self, in keychain: KeychainSwift, forKey key: String, withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
         return keychain.set(value, forKey: key, withAccess: access)
+    }
+}
+
+extension Optional: KeychainStorable where Wrapped: KeychainStorable {
+    public static func get(from keychain: KeychainSwift, key: String) -> Self? {
+        return Wrapped.get(from: keychain, key: key)
+    }
+    @discardableResult
+    public static func set(_ value: Self, in keychain: KeychainSwift, forKey key: String, withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
+        if let newValue = value {
+            return Wrapped.set(newValue, in: keychain, forKey: key, withAccess: access)
+        } else {
+            return keychain.delete(key)
+        }
     }
 }
 

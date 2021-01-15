@@ -90,7 +90,7 @@ extension UserDefault.Key: ExpressibleByStringLiteral {
 }
 
 /**
- The `OptionalUserDefault` property wrapper is responsible for saving and loading an optional value from the user defaults automatically.
+ The `OptionalUserDefault` property wrapper is responsible for saving and loading of an optional value from the user defaults automatically.
 
  ```swift
  @OptionalUserDefault(key: "lastLaunchDate")

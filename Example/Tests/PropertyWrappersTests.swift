@@ -71,10 +71,22 @@ class TYUtilsPropertyWrappersTests: XCTestCase {
     @Keychain(key: .testKeychainDataKey)
     var keychainData: Data = defaultDataValue
 
+    @Keychain(key: .testOptionalKeychainStringKey)
+    var optionalKeychainString: String?
+
+    @Keychain(key: .testOptionalKeychainBoolKey)
+    var optionalKeychainBool: Bool?
+
+    @Keychain(key: .testOptionalKeychainDataKey)
+    var optionalKeychainData: Data?
+
     func testKeychain() throws {
         _testKeychainString()
         _testKeychainBool()
         _testKeychainData()
+        _testOptionalKeychainString()
+        _testOptionalKeychainBool()
+        _testOptionalKeychainData()
     }
 
     private func _testUserDefaultString() {
@@ -200,6 +212,51 @@ class TYUtilsPropertyWrappersTests: XCTestCase {
         XCTAssertEqual(keychainData, defaultDataValue)
     }
 
+    private func _testOptionalKeychainString() {
+        // Default value
+        XCTAssertNil(optionalKeychainString)
+
+        // Updated value
+        optionalKeychainString = newStringValue
+        XCTAssertEqual(optionalKeychainString, newStringValue)
+        optionalKeychainString = nil
+        XCTAssertNil(optionalKeychainString)
+
+        // Default value again
+        KeychainSwift().reset()
+        XCTAssertNil(optionalKeychainString)
+    }
+
+    private func _testOptionalKeychainBool() {
+        // Default value
+        XCTAssertNil(optionalKeychainBool)
+
+        // Updated value
+        optionalKeychainBool = newBoolValue
+        XCTAssertEqual(optionalKeychainBool, newBoolValue)
+        optionalKeychainBool = nil
+        XCTAssertNil(optionalKeychainBool)
+
+        // Default value again
+        KeychainSwift().reset()
+        XCTAssertNil(optionalKeychainBool)
+    }
+
+    private func _testOptionalKeychainData() {
+        // Default value
+        XCTAssertNil(optionalKeychainData)
+
+        // Updated value
+        optionalKeychainData = newDataValue
+        XCTAssertEqual(optionalKeychainData, newDataValue)
+        optionalKeychainData = nil
+        XCTAssertNil(optionalKeychainData)
+
+        // Default value again
+        KeychainSwift().reset()
+        XCTAssertNil(optionalKeychainData)
+    }
+
 }
 
 enum Keys: String, CaseIterable {
@@ -237,4 +294,8 @@ extension Keychain.Key {
     static var testKeychainStringKey: Self { .init(Keys.testStringKey.rawValue) }
     static var testKeychainBoolKey: Self { .init(Keys.testBoolKey.rawValue) }
     static var testKeychainDataKey: Self { .init(Keys.testDataKey.rawValue) }
+
+    static var testOptionalKeychainStringKey: Self { .init(Keys.testOptionalStringKey.rawValue) }
+    static var testOptionalKeychainBoolKey: Self { .init(Keys.testOptionalBoolKey.rawValue) }
+    static var testOptionalKeychainDataKey: Self { .init(Keys.testOptionalDataKey.rawValue) }
 }
