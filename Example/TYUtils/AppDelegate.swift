@@ -11,6 +11,7 @@ import TYUtils
 
 private extension UserDefault.Key {
     static var isAppFirstInstall: Self { return "isAppFirstInstall" }
+    static var lastLaunchDate: Self { return "lastLaunchDate" }
 }
 
 private extension Keychain.Key {
@@ -31,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @UserDefault(key: .isAppFirstInstall)
     var isAppFirstInstall: Bool = true
 
+    @OptionalUserDefault(key: .lastLaunchDate)
+    var lastLaunchDate: Date?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
@@ -46,8 +50,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("The app has already been launched on this device")
         }
 
+        if let lastLaunchDate = lastLaunchDate {
+            print("Last launch date is \(lastLaunchDate)")
+        } else {
+            print("The app has never been launched yet")
+        }
+
         isAppFirstInstallEver = false
         isAppFirstInstall = false
+        lastLaunchDate = Date()
 
         return true
     }

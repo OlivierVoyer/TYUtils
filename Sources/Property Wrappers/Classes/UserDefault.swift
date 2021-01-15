@@ -18,20 +18,20 @@ import Foundation
  NOTE: The value parameter can be only property list objects: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects. For more information, see What is a Property List? in Property List Programming Guide.
  */
 @propertyWrapper
-public final class UserDefault<T> {
+public class UserDefault<T> {
 
     /// Key under which the data is stored in the user defaults
-    private let key: Key
+    fileprivate let key: Key
 
     /// Default value if no value has been stored for the given key with the correct type
-    private let defaultValue: T
+    fileprivate let defaultValue: T
 
     /// User defaults object to use. By default, UserDefaults.standard
-    private let defaults: UserDefaults
+    fileprivate let defaults: UserDefaults
 
     /// Load/save the value to/from the user defaults
     public var wrappedValue: T {
-        get { defaults.object(forKey: key.rawValue) as? T ?? defaultValue }
+        get { return defaults.object(forKey: key.rawValue) as? T ?? defaultValue }
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
 
@@ -39,7 +39,7 @@ public final class UserDefault<T> {
     public var projectedValue: String { key.rawValue }
 
     /**
-     Initializes a new property wrapper allowing the automatic loading/saving of any compatible value in the user Defaults.
+     Initializes a new property wrapper allowing the automatic loading/saving of any compatible value in the user defaults.
 
      NOTE: The value parameter can be only property list objects: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects. For more information, see What is a Property List? in Property List Programming Guide.
 
@@ -87,4 +87,44 @@ extension UserDefault.Key: ExpressibleByStringLiteral {
     public init(stringLiteral value: StaticString) {
         self.init(rawValue: "\(value)")
     }
+}
+
+/**
+ The `OptionalUserDefault` property wrapper is responsible for saving and loading an optional value from the user defaults automatically.
+
+ ```swift
+ @OptionalUserDefault(key: "lastLaunchDate")
+ var lastLaunchDate: Date?
+ ```
+
+ NOTE: The value parameter can be only property list objects: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects. For more information, see What is a Property List? in Property List Programming Guide.
+ */
+@propertyWrapper
+public class OptionalUserDefault<T>: UserDefault<T?> {
+
+    /// Load/save the value to/from the user defaults
+    public override var wrappedValue: T? {
+        get { return super.wrappedValue }
+        set {
+            if let newValue = newValue {
+                super.wrappedValue = newValue
+            } else {
+                defaults.removeObject(forKey: key.rawValue)
+            }
+        }
+    }
+
+    /**
+     Initializes a new property wrapper allowing the automatic loading/saving of an optional of any compatible value in the user defaults.
+
+     NOTE: The value parameter can be only property list objects: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects. For more information, see What is a Property List? in Property List Programming Guide.
+
+     - Parameters:
+        - key: Key under which the data is stored in the user defaults
+        - userDefault: User defaults object to use
+     */
+    public init(key: Key, userDefault: UserDefaults = .standard) {
+        super.init(wrappedValue: nil, key: key, userDefault: userDefault)
+    }
+
 }
