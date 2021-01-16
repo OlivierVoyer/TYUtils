@@ -33,8 +33,8 @@ The complete API reference is available [here](https://oliviervoyer.github.io/TY
 The READMEs for components of TYUtils can be found in their respective
 project folders.
 
-- [Property Wrappers](Sources/Property%20Wrappers/README.md)
-- [Extensions](Sources/Extensions/README.md)
+- [Property Wrappers](https://github.com/OlivierVoyer/TYUtils/blob/master/Sources/Property%20Wrappers/README.md)
+- [Extensions](https://github.com/OlivierVoyer/TYUtils/blob/master/Sources/Extensions/README.md)
 
 ## Local Setup
 
