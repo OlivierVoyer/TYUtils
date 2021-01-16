@@ -32,7 +32,7 @@ public class UserDefault<T> {
     /// Load/save the value to/from the user defaults
     public var wrappedValue: T {
         get { return defaults.object(forKey: key.rawValue) as? T ?? defaultValue }
-        set { defaults.set(newValue, forKey: key.rawValue) }
+        set { set(newValue, forKey: key) }
     }
 
     /// Use the key as the property wrapper projected value
@@ -54,6 +54,43 @@ public class UserDefault<T> {
         self.defaults = userDefault
     }
 
+    /**
+     Initializes a new property wrapper allowing the automatic loading/saving of an optional value of any compatible value in the user defaults.
+
+     NOTE: The value parameter can be only property list objects: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects. For more information, see What is a Property List? in Property List Programming Guide.
+
+     - Parameters:
+        - wrappedValue: The default value if no value has been stored for the given key with the correct type
+        - key: Key under which the data is stored in the user defaults
+        - userDefault: User defaults object to use
+     */
+    public init<U>(key: Key, userDefault: UserDefaults = .standard) where T == U? {
+        self.defaultValue = nil
+        self.key = key
+        self.defaults = userDefault
+    }
+
+    private func set(_ value: T, forKey key: Key) {
+        /// A nil value is used to delete the existing key from the user defaults
+        if let value = value as? OptionalProtocol, value.isNil {
+            defaults.removeObject(forKey: key.rawValue)
+            return
+        }
+        defaults.set(value, forKey: key.rawValue)
+    }
+
+}
+
+// Private protocol to detect Optional type in generic type T
+
+/// :nodoc:
+private protocol OptionalProtocol: ExpressibleByNilLiteral {
+    var isNil: Bool { get }
+}
+
+/// :nodoc:
+extension Optional: OptionalProtocol {
+    var isNil: Bool { return self == nil }
 }
 
 // MARK: Key type definition
@@ -87,44 +124,4 @@ extension UserDefault.Key: ExpressibleByStringLiteral {
     public init(stringLiteral value: StaticString) {
         self.init(rawValue: "\(value)")
     }
-}
-
-/**
- The `OptionalUserDefault` property wrapper is responsible for saving and loading of an optional value from the user defaults automatically.
-
- ```swift
- @OptionalUserDefault(key: "lastLaunchDate")
- var lastLaunchDate: Date?
- ```
-
- NOTE: The value parameter can be only property list objects: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects. For more information, see What is a Property List? in Property List Programming Guide.
- */
-@propertyWrapper
-public class OptionalUserDefault<T>: UserDefault<T?> {
-
-    /// Load/save the value to/from the user defaults
-    public override var wrappedValue: T? {
-        get { return super.wrappedValue }
-        set {
-            if let newValue = newValue {
-                super.wrappedValue = newValue
-            } else {
-                defaults.removeObject(forKey: key.rawValue)
-            }
-        }
-    }
-
-    /**
-     Initializes a new property wrapper allowing the automatic loading/saving of an optional of any compatible value in the user defaults.
-
-     NOTE: The value parameter can be only property list objects: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects. For more information, see What is a Property List? in Property List Programming Guide.
-
-     - Parameters:
-        - key: Key under which the data is stored in the user defaults
-        - userDefault: User defaults object to use
-     */
-    public init(key: Key, userDefault: UserDefaults = .standard) {
-        super.init(wrappedValue: nil, key: key, userDefault: userDefault)
-    }
-
 }

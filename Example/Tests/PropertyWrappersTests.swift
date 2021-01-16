@@ -41,25 +41,14 @@ class TYUtilsPropertyWrappersTests: XCTestCase {
     @UserDefault(key: .testUserDefaultDataKey)
     var userDefaultData: Data = defaultDataValue
 
+    @UserDefault(key: .testOptionalUserDefaultStringKey)
+    var optionalUserDefaultString: String?
+
     func testUserDefault() throws {
         _testUserDefaultString()
         _testUserDefaultBool()
         _testUserDefaultData()
-    }
-
-    @OptionalUserDefault(key: .testOptionalUserDefaultStringKey)
-    var optionalUserDefaultString: String?
-
-    @OptionalUserDefault(key: .testOptionalUserDefaultBoolKey)
-    var optionalUserDefaultBool: Bool?
-
-    @OptionalUserDefault(key: .testOptionalUserDefaultDataKey)
-    var optionalUserDefaultData: Data?
-
-    func testOptionalUserDefault() throws {
         _testOptionalUserDefaultString()
-        _testOptionalUserDefaultBool()
-        _testOptionalUserDefaultData()
     }
 
     @Keychain(key: .testKeychainStringKey)
@@ -74,19 +63,11 @@ class TYUtilsPropertyWrappersTests: XCTestCase {
     @Keychain(key: .testOptionalKeychainStringKey)
     var optionalKeychainString: String?
 
-    @Keychain(key: .testOptionalKeychainBoolKey)
-    var optionalKeychainBool: Bool?
-
-    @Keychain(key: .testOptionalKeychainDataKey)
-    var optionalKeychainData: Data?
-
     func testKeychain() throws {
         _testKeychainString()
         _testKeychainBool()
         _testKeychainData()
         _testOptionalKeychainString()
-        _testOptionalKeychainBool()
-        _testOptionalKeychainData()
     }
 
     private func _testUserDefaultString() {
@@ -143,36 +124,6 @@ class TYUtilsPropertyWrappersTests: XCTestCase {
         XCTAssertNil(optionalUserDefaultString)
     }
 
-    private func _testOptionalUserDefaultBool() {
-        // Default value
-        XCTAssertNil(optionalUserDefaultBool)
-
-        // Updated value
-        optionalUserDefaultBool = newBoolValue
-        XCTAssertEqual(optionalUserDefaultBool, newBoolValue)
-        optionalUserDefaultBool = nil
-        XCTAssertNil(optionalUserDefaultBool)
-
-        // Default value again
-        UserDefaults.standard.reset()
-        XCTAssertNil(optionalUserDefaultBool)
-    }
-
-    private func _testOptionalUserDefaultData() {
-        // Default value
-        XCTAssertNil(optionalUserDefaultData)
-
-        // Updated value
-        optionalUserDefaultData = newDataValue
-        XCTAssertEqual(optionalUserDefaultData, newDataValue)
-        optionalUserDefaultData = nil
-        XCTAssertNil(optionalUserDefaultData)
-
-        // Default value again
-        UserDefaults.standard.reset()
-        XCTAssertNil(optionalUserDefaultData)
-    }
-
     private func _testKeychainString() {
         // Default value
         XCTAssertEqual(keychainString, defaultStringValue)
@@ -227,36 +178,6 @@ class TYUtilsPropertyWrappersTests: XCTestCase {
         XCTAssertNil(optionalKeychainString)
     }
 
-    private func _testOptionalKeychainBool() {
-        // Default value
-        XCTAssertNil(optionalKeychainBool)
-
-        // Updated value
-        optionalKeychainBool = newBoolValue
-        XCTAssertEqual(optionalKeychainBool, newBoolValue)
-        optionalKeychainBool = nil
-        XCTAssertNil(optionalKeychainBool)
-
-        // Default value again
-        KeychainSwift().reset()
-        XCTAssertNil(optionalKeychainBool)
-    }
-
-    private func _testOptionalKeychainData() {
-        // Default value
-        XCTAssertNil(optionalKeychainData)
-
-        // Updated value
-        optionalKeychainData = newDataValue
-        XCTAssertEqual(optionalKeychainData, newDataValue)
-        optionalKeychainData = nil
-        XCTAssertNil(optionalKeychainData)
-
-        // Default value again
-        KeychainSwift().reset()
-        XCTAssertNil(optionalKeychainData)
-    }
-
 }
 
 enum Keys: String, CaseIterable {
@@ -264,8 +185,6 @@ enum Keys: String, CaseIterable {
     case testBoolKey
     case testDataKey
     case testOptionalStringKey
-    case testOptionalBoolKey
-    case testOptionalDataKey
 }
 
 extension UserDefaults {
@@ -284,18 +203,12 @@ extension UserDefault.Key {
     static var testUserDefaultStringKey: Self { .init(Keys.testStringKey.rawValue) }
     static var testUserDefaultBoolKey: Self { .init(Keys.testBoolKey.rawValue) }
     static var testUserDefaultDataKey: Self { .init(Keys.testDataKey.rawValue) }
-
     static var testOptionalUserDefaultStringKey: Self { .init(Keys.testOptionalStringKey.rawValue) }
-    static var testOptionalUserDefaultBoolKey: Self { .init(Keys.testOptionalBoolKey.rawValue) }
-    static var testOptionalUserDefaultDataKey: Self { .init(Keys.testOptionalDataKey.rawValue) }
 }
 
 extension Keychain.Key {
     static var testKeychainStringKey: Self { .init(Keys.testStringKey.rawValue) }
     static var testKeychainBoolKey: Self { .init(Keys.testBoolKey.rawValue) }
     static var testKeychainDataKey: Self { .init(Keys.testDataKey.rawValue) }
-
     static var testOptionalKeychainStringKey: Self { .init(Keys.testOptionalStringKey.rawValue) }
-    static var testOptionalKeychainBoolKey: Self { .init(Keys.testOptionalBoolKey.rawValue) }
-    static var testOptionalKeychainDataKey: Self { .init(Keys.testOptionalDataKey.rawValue) }
 }

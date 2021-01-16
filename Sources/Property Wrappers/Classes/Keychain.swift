@@ -39,8 +39,8 @@ public final class Keychain<T: KeychainStorable> {
 
     /// Load/save the value to/from the keychain
     public var wrappedValue: T {
-        get { return T.get(from: keychain, key: key.rawValue) ?? defaultValue }
-        set { T.set(newValue, in: keychain, forKey: key.rawValue, withAccess: access) }
+        get { return T.get(from: keychain, key: key) ?? defaultValue }
+        set { T.set(newValue, in: keychain, forKey: key, withAccess: access) }
     }
 
     /// Use the key as the property wrapper projected value
@@ -159,7 +159,7 @@ public protocol KeychainStorable {
         - keychain: Keychain object to use
         - key: Key under which the data is stored in the keychain
      */
-    static func get(from keychain: KeychainSwift, key: String) -> Self?
+    static func get<T>(from keychain: KeychainSwift, key: Keychain<T>.Key) -> Self?
 
     /**
      Save a value to the keychain.
@@ -169,50 +169,54 @@ public protocol KeychainStorable {
         - key: Key under which the data is stored in the keychain
      */
     @discardableResult
-    static func set(_ value: Self, in keychain: KeychainSwift, forKey key: String, withAccess access: KeychainSwiftAccessOptions?) -> Bool
+    static func set<T>(_ value: Self, in keychain: KeychainSwift, forKey key: Keychain<T>.Key, withAccess access: KeychainSwiftAccessOptions?) -> Bool
 
 }
 
+/// :nodoc:
 extension String: KeychainStorable {
-    public static func get(from keychain: KeychainSwift, key: String) -> Self? {
-        return keychain.get(key)
+    public static func get<T>(from keychain: KeychainSwift, key: Keychain<T>.Key) -> Self? {
+        return keychain.get(key.rawValue)
     }
     @discardableResult
-    public static func set(_ value: Self, in keychain: KeychainSwift, forKey key: String, withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
-        return keychain.set(value, forKey: key, withAccess: access)
+    public static func set<T>(_ value: Self, in keychain: KeychainSwift, forKey key: Keychain<T>.Key, withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
+        return keychain.set(value, forKey: key.rawValue, withAccess: access)
     }
 }
 
+/// :nodoc:
 extension Bool: KeychainStorable {
-    public static func get(from keychain: KeychainSwift, key: String) -> Self? {
-        return keychain.getBool(key)
+    public static func get<T>(from keychain: KeychainSwift, key: Keychain<T>.Key) -> Self? {
+        return keychain.getBool(key.rawValue)
     }
     @discardableResult
-    public static func set(_ value: Self, in keychain: KeychainSwift, forKey key: String, withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
-        return keychain.set(value, forKey: key, withAccess: access)
+    public static func set<T>(_ value: Self, in keychain: KeychainSwift, forKey key: Keychain<T>.Key, withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
+        return keychain.set(value, forKey: key.rawValue, withAccess: access)
     }
 }
 
+/// :nodoc:
 extension Data: KeychainStorable {
-    public static func get(from keychain: KeychainSwift, key: String) -> Self? {
-        return keychain.getData(key)
+    public static func get<T>(from keychain: KeychainSwift, key: Keychain<T>.Key) -> Self? {
+        return keychain.getData(key.rawValue)
     }
     @discardableResult
-    public static func set(_ value: Self, in keychain: KeychainSwift, forKey key: String, withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
-        return keychain.set(value, forKey: key, withAccess: access)
+    public static func set<T>(_ value: Self, in keychain: KeychainSwift, forKey key: Keychain<T>.Key, withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
+        return keychain.set(value, forKey: key.rawValue, withAccess: access)
     }
 }
 
+/// :nodoc:
 extension Optional: KeychainStorable where Wrapped: KeychainStorable {
-    public static func get(from keychain: KeychainSwift, key: String) -> Self? {
+    public static func get<T>(from keychain: KeychainSwift, key: Keychain<T>.Key) -> Self? {
         return Wrapped.get(from: keychain, key: key)
     }
     @discardableResult
-    public static func set(_ value: Self, in keychain: KeychainSwift, forKey key: String, withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
+    public static func set<T>(_ value: Self, in keychain: KeychainSwift, forKey key: Keychain<T>.Key, withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
         if let newValue = value {
             return Wrapped.set(newValue, in: keychain, forKey: key, withAccess: access)
         } else {
-            return keychain.delete(key)
+            return keychain.delete(key.rawValue)
         }
     }
 }

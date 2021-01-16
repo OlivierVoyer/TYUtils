@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @UserDefault(key: .isAppFirstInstall)
     var isAppFirstInstall: Bool = true
 
-    @OptionalUserDefault(key: .lastLaunchDate)
+    @UserDefault(key: .lastLaunchDate)
     var lastLaunchDate: Date?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
