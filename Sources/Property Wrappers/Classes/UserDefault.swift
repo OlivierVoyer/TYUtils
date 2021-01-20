@@ -18,7 +18,7 @@ import Foundation
  NOTE: The value parameter can be only property list objects: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary. For NSArray and NSDictionary objects, their contents must be property list objects. For more information, see What is a Property List? in Property List Programming Guide.
  */
 @propertyWrapper
-public class UserDefault<T> {
+public final class UserDefault<T> {
 
     /// Key under which the data is stored in the user defaults
     fileprivate let key: Key
