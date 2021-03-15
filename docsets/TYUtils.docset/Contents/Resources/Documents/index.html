@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TYUtils  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="TYUtils  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          TYUtils 0.2.1 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/OlivierVoyer/TYUtils">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Foliviervoyer.github.io%2FTYUtils%2Fdocsets%2FTYUtils.xml">
+            <img class="header-icon" src="img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">TYUtils Reference</a>
+      <img class="carat" src="img/carat.png" />
+      TYUtils  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Keychain.html">Keychain</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/Keychain/Key.html">– Key</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/UserDefault.html">UserDefault</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/UserDefault/Key.html">– Key</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/URL.html">URL</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/KeychainStorable.html">KeychainStorable</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            
+            <h1 id='tyutils' class='heading'>TYUtils</h1>
+
+<p><a href="https://travis-ci.com/OlivierVoyer/TYUtils"><img src="https://travis-ci.com/OlivierVoyer/TYUtils.svg" alt="Build Status"></a>
+<a href="https://cocoapods.org/pods/TYUtils"><img src="https://img.shields.io/cocoapods/v/TYUtils.svg?style=flat" alt="Version"></a>
+<a href="https://cocoapods.org/pods/TYUtils"><img src="https://img.shields.io/cocoapods/l/TYUtils.svg?style=flat" alt="License"></a>
+<a href="https://cocoapods.org/pods/TYUtils"><img src="https://img.shields.io/cocoapods/p/TYUtils.svg?style=flat" alt="Platform"></a>
+<a href="https://oliviervoyer.github.io/TYUtils"><img src="https://oliviervoyer.github.io/TYUtils/badge.svg" alt="Documentation"></a></p>
+
+<p>A set of iOS helpers and extensions to help writing smart, robust, clear and perfomant code.</p>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>TYUtils is available through <a href="https://cocoapods.org">CocoaPods</a>. To install
+it, simply add the following line to your Podfile:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'TYUtils'</span>       <span class="c1"># Pull in all TYUtils features</span>
+</code></pre>
+
+<p>If you don&rsquo;t want to use all of TYUtils, there are multiple subspecs which can selectively install subsets of the full feature set:</p>
+<pre class="highlight ruby"><code><span class="c1"># Only pull in Property Wrappers features</span>
+<span class="n">pod</span> <span class="s1">'TYUtils/PropertyWrappers'</span>
+<span class="c1"># Only pull in Extensions features</span>
+<span class="n">pod</span> <span class="s1">'TYUtils/Extensions'</span>
+</code></pre>
+<h2 id='documentation' class='heading'>Documentation</h2>
+
+<p>The complete API reference is available <a href="https://oliviervoyer.github.io/TYUtils">here</a>.</p>
+
+<p>The READMEs for components of TYUtils can be found in their respective
+project folders.</p>
+
+<ul>
+<li><a href="https://github.com/OlivierVoyer/TYUtils/blob/master/Sources/Property%20Wrappers/README.md">Property Wrappers</a></li>
+<li><a href="https://github.com/OlivierVoyer/TYUtils/blob/master/Sources/Extensions/README.md">Extensions</a></li>
+</ul>
+<h2 id='local-setup' class='heading'>Local Setup</h2>
+
+<p>If you&rsquo;d like to contribute to TYUtils, you&rsquo;ll need to run the
+following commands to get your environment set up:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>git clone https://github.com/OlivierVoyer/TYUtils.git
+<span class="gp">$ </span><span class="nb">cd </span>TYUtils
+<span class="gp">$ </span>pod install --project-directory<span class="o">=</span>Example
+</code></pre>
+
+<p>Alternatively you can use <code>pod try TYUtils</code> to install the example project.</p>
+<h2 id='contributing-to-tyutils' class='heading'>Contributing to TYUtils</h2>
+<h3 id='contribution-process' class='heading'>Contribution Process</h3>
+
+<ol>
+<li>Submit an issue describing your proposed change to the repo in question.</li>
+<li>The repo owner will respond to your issue promptly.</li>
+<li>Fork the desired repo, develop and test your code changes.</li>
+<li>Ensure that your code adheres to the existing style of the library to which
+you are contributing.</li>
+<li>Ensure that your code has an appropriate set of unit tests which all pass.</li>
+<li>Submit a pull request</li>
+</ol>
+<h2 id='author' class='heading'>Author</h2>
+
+<p>Olivier Voyer, <a href="mailto:olivier@tekiteazy.com">olivier@tekiteazy.com</a></p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>TYUtils is available under the MIT license. See the LICENSE file for more info.</p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2021 <a class="link" href="https://github.com/OlivierVoyer" target="_blank" rel="external">Olivier Voyer</a>. All rights reserved. (Last updated: 2021-03-15)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

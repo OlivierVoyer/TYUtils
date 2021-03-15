@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Keychain Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/Keychain" class="dashAnchor"></a>
+
+    <a title="Keychain Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          TYUtils 0.2.1 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/OlivierVoyer/TYUtils">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Foliviervoyer.github.io%2FTYUtils%2Fdocsets%2FTYUtils.xml">
+            <img class="header-icon" src="../img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">TYUtils Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      Keychain Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Keychain.html">Keychain</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Keychain/Key.html">– Key</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/UserDefault.html">UserDefault</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/UserDefault/Key.html">– Key</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/URL.html">URL</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/KeychainStorable.html">KeychainStorable</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>Keychain</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">@propertyWrapper</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">Keychain</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/KeychainStorable.html">KeychainStorable</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>The <code>Keychain</code> property wrapper is responsible for saving and loading a value from the user keychain automatically.</p>
+
+<p>NOTE: The current implementation is using the <a href="https://github.com/evgenyneu/keychain-swift">KeychainSwift</a> library.</p>
+<pre class="highlight swift"><code><span class="kd">@Keychain(key: "isAppFirstInstallEver",
+          synchronizable: true,
+          keyPrefix: "com.tekiteazy.TYUtils_Example.")</span>
+<span class="k">var</span> <span class="nv">isAppFirstInstallEver</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span>
+</code></pre>
+
+<p>NOTE: The value parameter can be only one of String, Bool or Data.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7TYUtils8KeychainC12wrappedValuexvp"></a>
+                    <a name="//apple_ref/swift/Property/wrappedValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TYUtils8KeychainC12wrappedValuexvp">wrappedValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Load/save the value to/from the keychain</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">wrappedValue</span><span class="p">:</span> <span class="kt">T</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7TYUtils8KeychainC14projectedValueSSvp"></a>
+                    <a name="//apple_ref/swift/Property/projectedValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TYUtils8KeychainC14projectedValueSSvp">projectedValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use the key as the property wrapper projected value</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">projectedValue</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7TYUtils8KeychainC12wrappedValue3key8keychain10withAccessACyxGx_AC3KeyVyx_G0B5SwiftALCAL0bjH7OptionsOSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(wrappedValue:key:keychain:withAccess:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TYUtils8KeychainC12wrappedValue3key8keychain10withAccessACyxGx_AC3KeyVyx_G0B5SwiftALCAL0bjH7OptionsOSgtcfc">init(wrappedValue:<wbr>key:<wbr>keychain:<wbr>withAccess:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new property wrapper allowing the automatic loading/saving of any compatible value in the keychain.</p>
+
+<p>NOTE: The value parameter can be only one of String, Bool or Data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">wrappedValue</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Classes/Keychain/Key.html">Key</a></span><span class="p">,</span> <span class="nv">keychain</span><span class="p">:</span> <span class="kt">KeychainSwift</span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+            <span class="n">withAccess</span> <span class="nv">access</span><span class="p">:</span> <span class="kt">KeychainSwiftAccessOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>wrappedValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The default value if no value has been stored for the given key with the correct type</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Key under which the data is stored in the keychain</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keychain</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Keychain object to use</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>access</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Value that indicates when your app needs access to the text in the keychain item. If omitted, the .AccessibleWhenUnlocked option is used that permits the data to be accessed only while the device is unlocked by the user.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7TYUtils8KeychainC3key8keychain10withAccessACyqd__SgGAC3KeyVyAG_G_0B5SwiftALCAL0bhF7OptionsOSgtcAGRszAA0B8StorableRd__lufc"></a>
+                    <a name="//apple_ref/swift/Method/init(key:keychain:withAccess:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TYUtils8KeychainC3key8keychain10withAccessACyqd__SgGAC3KeyVyAG_G_0B5SwiftALCAL0bhF7OptionsOSgtcAGRszAA0B8StorableRd__lufc">init(key:<wbr>keychain:<wbr>withAccess:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new property wrapper allowing the automatic loading/saving of an optional value of any compatible value in the keychain.</p>
+
+<p>NOTE: The value parameter can be only one of String, Bool or Data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">U</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Classes/Keychain/Key.html">Key</a></span><span class="p">,</span> <span class="nv">keychain</span><span class="p">:</span> <span class="kt">KeychainSwift</span> <span class="o">=</span> <span class="o">.</span><span class="nf">init</span><span class="p">(),</span>
+               <span class="n">withAccess</span> <span class="nv">access</span><span class="p">:</span> <span class="kt">KeychainSwiftAccessOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="k">where</span> <span class="kt">T</span> <span class="o">==</span> <span class="kt">U</span><span class="p">?,</span> <span class="kt">U</span><span class="p">:</span> <span class="kt"><a href="../Protocols/KeychainStorable.html">KeychainStorable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Key under which the data is stored in the keychain</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keychain</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Keychain object to use</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>access</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Value that indicates when your app needs access to the text in the keychain item. If omitted, the .AccessibleWhenUnlocked option is used that permits the data to be accessed only while the device is unlocked by the user.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Convenience%20initializers"></a>
+                <a name="//apple_ref/swift/Section/Convenience initializers" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Convenience%20initializers"></a>
+                  <h3 class="section-name"><p>Convenience initializers</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7TYUtils8KeychainC12wrappedValue3key10withAccess14synchronizable11accessGroup0E6PrefixACyxGx_AC3KeyVyx_G0B5Swift0bmG7OptionsOSgSbSSSgARtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(wrappedValue:key:withAccess:synchronizable:accessGroup:keyPrefix:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TYUtils8KeychainC12wrappedValue3key10withAccess14synchronizable11accessGroup0E6PrefixACyxGx_AC3KeyVyx_G0B5Swift0bmG7OptionsOSgSbSSSgARtcfc">init(wrappedValue:<wbr>key:<wbr>withAccess:<wbr>synchronizable:<wbr>accessGroup:<wbr>keyPrefix:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new property wrapper allowing the automatic loading/saving of any compatible value in the keychain.</p>
+
+<p>NOTE: The value parameter can be only one of String, Bool or Data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">wrappedValue</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span> <span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Classes/Keychain/Key.html">Key</a></span><span class="p">,</span>
+                 <span class="n">withAccess</span> <span class="nv">access</span><span class="p">:</span> <span class="kt">KeychainSwiftAccessOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+                 <span class="nv">synchronizable</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nv">accessGroup</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">keyPrefix</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>wrappedValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The default value if no value has been stored for the given key with the correct type</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Key under which the data is stored in the keychain</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>access</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Value that indicates when your app needs access to the text in the keychain item. If omitted, the .AccessibleWhenUnlocked option is used that permits the data to be accessed only while the device is unlocked by the user.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>synchronizable</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Specifies whether the items can be synchronized with other devices through iCloud.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>accessGroup</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Specify an access group that will be used to access keychain items. In order to share keychain items between apps on the same device they need to have common Keychain Groups registered in Capabilities &gt; Keychain Sharing settings.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keyPrefix</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A prefix that is added before the key in get/set methods.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7TYUtils8KeychainC3key10withAccess14synchronizable11accessGroup0C6PrefixACyqd__SgGAC3KeyVyAI_G_0B5Swift0bkE7OptionsOSgSbSSSgARtcAIRszAA0B8StorableRd__lufc"></a>
+                    <a name="//apple_ref/swift/Method/init(key:withAccess:synchronizable:accessGroup:keyPrefix:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TYUtils8KeychainC3key10withAccess14synchronizable11accessGroup0C6PrefixACyqd__SgGAC3KeyVyAI_G_0B5Swift0bkE7OptionsOSgSbSSSgARtcAIRszAA0B8StorableRd__lufc">init(key:<wbr>withAccess:<wbr>synchronizable:<wbr>accessGroup:<wbr>keyPrefix:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new property wrapper allowing the automatic loading/saving of an optional value of any compatible value in the keychain.</p>
+
+<p>NOTE: The value parameter can be only one of String, Bool or Data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="n">convenience</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">U</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">key</span><span class="p">:</span> <span class="kt"><a href="../Classes/Keychain/Key.html">Key</a></span><span class="p">,</span>
+                    <span class="n">withAccess</span> <span class="nv">access</span><span class="p">:</span> <span class="kt">KeychainSwiftAccessOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+                    <span class="nv">synchronizable</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nv">accessGroup</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+                    <span class="nv">keyPrefix</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="k">where</span> <span class="kt">T</span> <span class="o">==</span> <span class="kt">U</span><span class="p">?,</span> <span class="kt">U</span><span class="p">:</span> <span class="kt"><a href="../Protocols/KeychainStorable.html">KeychainStorable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Key under which the data is stored in the keychain</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>access</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Value that indicates when your app needs access to the text in the keychain item. If omitted, the .AccessibleWhenUnlocked option is used that permits the data to be accessed only while the device is unlocked by the user.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>synchronizable</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Specifies whether the items can be synchronized with other devices through iCloud.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>accessGroup</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Specify an access group that will be used to access keychain items. In order to share keychain items between apps on the same device they need to have common Keychain Groups registered in Capabilities &gt; Keychain Sharing settings.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keyPrefix</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A prefix that is added before the key in get/set methods.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Key%20type%20definition"></a>
+                <a name="//apple_ref/swift/Section/Key type definition" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Key%20type%20definition"></a>
+                  <h3 class="section-name"><p>Key type definition</p>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7TYUtils8KeychainC3KeyV"></a>
+                    <a name="//apple_ref/swift/Struct/Key" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7TYUtils8KeychainC3KeyV">Key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The type used for the key for a keychain entry</p>
+
+                        <a href="../Classes/Keychain/Key.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">Key</span> <span class="p">:</span> <span class="kt">Hashable</span><span class="p">,</span> <span class="kt">Equatable</span><span class="p">,</span> <span class="kt">RawRepresentable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt"><a href="../Classes/Keychain.html">Keychain</a></span><span class="o">.</span><span class="kt">Key</span><span class="p">:</span> <span class="kt">ExpressibleByStringLiteral</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2021 <a class="link" href="https://github.com/OlivierVoyer" target="_blank" rel="external">Olivier Voyer</a>. All rights reserved. (Last updated: 2021-03-15)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
